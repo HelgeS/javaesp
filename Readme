@@ -1,0 +1,113 @@
+][][][][][][][][][][][][][]][][][][][][[]][][][][][][][]][][][][][][][[][
+][
+][  ESP: Enforced Sub-Populations.
+][
+][][][][][][][][][][][][][][][][][][[[[ [][][][][][[[][][][][][][][][][][[
+
+Version 2.9 2/24/00
+
+Copyright (C) 2002   N. Alan Oursland
+
+This package contains the Java-code for evolving neural networks
+to solve the double pole balancing problem.
+See the file INSTALL for instructions on how to
+install ESP; see USERDOC for instructions on how to run it; see FILES
+for explanation on the software package itself.
+
+This code is a nearly-direct port of the C++ code written by Faustino
+Gomez. The c++ code is available at: 
+ftp://ftp.cs.utexas.edu/pub/neural-nets/software/ESP.2.9.tar.gz
+
+In case you don't know what ESP is, see e.g.
+@TechReport{gomez:tr248,
+  author       = "Faustino Gomez and Risto Miikkulainen",
+  title	       = "Incremental Evolution of Complex General Behavior",
+  institution  = UTCS,
+  year	       = 1996,
+  number       = "AI96-248",
+  annote       = "Subsumed by the journal version \cite{gomez:ab97}",
+}
+
+or this for a more complete explanation of the pole balancing problem
+that come with this package:
+@InProceedings{gomez:ijcai99,
+  author       = "Faustino Gomez and Risto Miikkulainen",
+  title	       = "Solving Non-{M}arkovian Control Tasks with
+                  Neuroevolution",
+  booktitle    = IJCAI-99,
+  year	       = 1999,
+  address      = "Denver, CO",
+  publisher    = KAUF,
+  url	       = UTCSNNDOCROOT # "gomez.ijcai99.ps.Z",
+  site	       = "Stockholm, Sweden",
+}
+
+which is available at:
+http://www.cs.utexas.edu/users/nn/pages/publications/neuro-evolution.html.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 2 as published
+by the Free Software Foundation. This program is distributed in the hope
+that it will be useful, but without any warranty; without even the
+implied warranty of merchantability or fitness for a particular purpose.
+See the GNU General Public License for more details.
+
+We hope that this software will be a useful starting point for your own
+explorations in Neuroevolution. The software is provided as is,
+however, we will do our best to maintain it and accommodate
+suggestions. If you want to be notified of future releases of the
+software or have questions, comments, bug reports or suggestions, send
+email to discern@cs.utexas.edu.
+
+--------------------------------------------------------------------------
+
+Files
+-----
+
+Esp.java	               : ESP implementation with Delta-Coding
+SubPopulation.java : A population of neurons for a single network location
+Neuron.java                : Implementation for a single neuron
+Environment.java           : Generic environment implementation
+CartPole.java             : Implementation of double pole cart environment
+Network.java               : Generic neural network implementation
+FeedForwardNetwork.java    : Feed-forward network with one hidden layer
+SimpleRecurrentNetwork.java : Simple recurrent network
+FullyRecurrentNetwork.java : Fully-recurrent network
+SecondOrderRecurrentNetwork.java : Second-order recurrent network
+RandomCauchy.java          : Specialized random function
+RandomFunction.java        : Interface to define a random function
+RandomSingleton.java       : Provides a single java.util.Random instance
+SignalHandler.java         : Class that handles Ctrl-C exit gracefully
+MaximizeFit.java	     : Comparator class to order maximum fitness first
+MinimizeFit.java         : Comparator class to order minimum fitness first
+esp.java				 : Class files in a jar
+----------------------------------------------------------------------------
+
+
+The package requires jdk1.3.1 or later.
+
+To install do the following:
+
+gunzip ESP.2.9.tar.gz
+mkdir <your ESP directory name>
+cd <your ESP directory name>
+tar xvf ESP.2.9.tar
+javac -classpath . *.java
+
+To run do the following:
+java -cp esp.jar Esp
+
+----------------------------------------------------------------------------
+
+Version History
+
+1.0 by N. Alan Oursland, 2002
+
+1.1 by Jacob Schrum, 2007
+    - Fixed Second Order Recurrent Networks
+    - Fixed Fully Recurrent Networks
+    - Modified Simple Recurrent Networks so that the size of the input array
+      does not have to be big enough to store recurrent activations.
+    - Added command line option for controlling the number of generations
+      before stopping
+    - Added command line option for outputting to file instead of console
